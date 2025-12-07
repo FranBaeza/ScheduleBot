@@ -164,6 +164,13 @@ namespace SchedulingAssistant.Entities
             DiscordButtonComponent AcceptButton = new(ButtonStyle.Primary, $"Accept_{this.Id}", "✅");
             DiscordButtonComponent TentativeButton = new(ButtonStyle.Primary, $"Tentative_{this.Id}", "☑️");
             DiscordButtonComponent Delete = new(ButtonStyle.Danger, $"Delete_{this.Id}", "❌");
+			DiscordButtonComponent PartyButton = new(ButtonStyle.Success, $"Accept_{this.Id}", "🎉");
+			DiscordButtonComponent DudaButton = new(ButtonStyle.Primary, $"Tentative_{this.Id}", "🤔");
+			DiscordButtonComponent QuestionButton = new(ButtonStyle.Primary, $"Question_{this.Id}", "💡");
+			DiscordButtonComponent BonusButton = new(ButtonStyle.Success, $"Bonus_{this.Id}", "🎁");
+			DiscordButtonComponent AlertButton = new(ButtonStyle.Danger, $"Alert_{this.Id}", "📢");
+			DiscordButtonComponent InfoButton = new(ButtonStyle.Secondary, $"Info_{this.Id}", "🌐");
+
 
             DiscordEmbedBuilder Builder = new DiscordEmbedBuilder();
             Builder.Title = EventTitle;
@@ -235,7 +242,8 @@ namespace SchedulingAssistant.Entities
             DiscordMessageBuilder MBuilder = new DiscordMessageBuilder().AddEmbed(Builder);
             if (withInteractions)
             {
-                MBuilder.AddComponents(AcceptButton, TentativeButton, Delete);
+                MBuilder.AddComponents(AcceptButton, TentativeButton, Delete, PartyButton, DudaButton, QuestionButton, BonusButton); // fila 1
+				MBuilder.AddComponents(AlertButton, InfoButton); // fila 2
             }
             return MBuilder;
         }
